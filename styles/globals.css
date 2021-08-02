@@ -13,4 +13,10 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: NotoSansRegular;
+}
+
+@font-face {
+  font-family: NotoSansRegular;
+  src: url("/styles/font/NotoSansKR-Regular.otf");
 }
