@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
+import { useRouter } from 'next/router';
+
 
 const Input = styled.div`
 	width: 100%;
@@ -35,14 +37,22 @@ const Input = styled.div`
 export const SearchInput = () => {
 
 	const [currentInputValue, setCurrentInputValue] = useState("");
+	const router = useRouter();
+	// const { pending, error, entity } = useAppSelector(rotationSelector);
+
+	const goSummonerPage = (summonerId: string) => {
+		console.log("summonerId in input", summonerId)
+		router.push(`/search/${summonerId}`)
+	}
 
 	return (
 		<>
 			<Input>
 				<div className={"input-box"}>
 					<input type={"text"} placeholder={"소환사명 검색"} onChange={(e) => setCurrentInputValue(e.target.value)}></input>
-					<button type="button" >검색</button>
+					<button type="button" onClick={() => goSummonerPage(currentInputValue)} >검색</button>
 				</div>
+				{/* {entity && <div>{entity.freeChampionIds}</div>} */}
 			</Input>
 		</>
 	)

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -15,6 +16,14 @@ const Wrapper = styled.div`
 		&:hover{
 			color: whitesmoke;
 		}
+	}
+
+	.logo{
+		width: auto;
+		margin-left: 20px;
+		font-size: 1.25rem;
+		color: #3367a1;
+		cursor: pointer;
 	}
 
 	.menu-title {
@@ -48,10 +57,20 @@ export const Top = () => {
 		},
 	];
 	const [currentMenu, setCurrentMenu] = useState("");
+	const router = useRouter();
+
+	const goHome = () => {
+		setCurrentMenu("");
+		router.push("/");
+	}
 
 	return (
 		<>
 			<Wrapper>
+				{
+					router.pathname !== "/" && 
+					<div className={"logo bold-font"} onClick={goHome}>KYU.GG</div>
+				}
 				<div className={"menu-title bold-font"}>리그오브레전드</div>
 				{
 					menuList && 
