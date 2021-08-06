@@ -25,8 +25,9 @@ const SummonerId = () => {
 	const tierInfo = useAppSelector(tierInfoSelector);
 	const [win, setWin] = useState(0);
 	const [lose, setLose] = useState(0);
-	const [tier, setTier] = useState("unranked");
+	const [tier, setTier] = useState("UNRANKED");
 	const [rank, setRank] = useState("");
+	const [leaguePoints, setLeguePoints] = useState(0);
 
 	useEffect(() => {
 		if(summonerId){
@@ -46,26 +47,27 @@ const SummonerId = () => {
 			setLose(tierInfo.entities[0].losses);
 			setTier(tierInfo.entities[0].tier);
 			setRank(tierInfo.entities[0].rank);
+			setLeguePoints(tierInfo.entities[0].leaguePoints)
 		} else {
 			setWin(0);
 			setLose(0);
-			setTier("unranked");
+			setTier("UNRANKED");
 			setRank("");
+			setLeguePoints(0);
 		}
 	}, [tierInfo.entities])
 
 	return (
 		<div>
-			<div>
-				소환사명 : {summonerInfo.entity.name} / {tier} {rank}
-			</div>
-			<div>
-				소환사 레벨 : {summonerInfo.entity.summonerLevel}
-			</div>
-			<div>
-				{win}승 {lose}패
-			</div>
-			<UserCard summonerName={summonerInfo.entity.name}/>
+			<UserCard 
+				summonerName={summonerInfo.entity.name}
+				wins={win}
+				lose={lose}
+				rank={rank}
+				tier={tier}
+				iconNumber={summonerInfo.entity.profileIconId}
+				leaguePoints={leaguePoints}
+			/>
 		</div>
 	)
 }
