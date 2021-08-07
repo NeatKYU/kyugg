@@ -15,6 +15,7 @@ import {
 
 //component
 import { UserCard } from '../../src/components/UserCard'
+import { MatchCard } from '../../src/components/MatchCard';
 
 const SummonerId = () => {
 
@@ -68,6 +69,7 @@ const SummonerId = () => {
 				iconNumber={summonerInfo.entity.profileIconId}
 				leaguePoints={leaguePoints}
 			/>
+			<MatchCard/>
 		</div>
 	)
 }

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 	padding: 2rem;
 	background-color: lightblue;
 	.card {
-		width: 60%;
+		width: 80%;
 		height: 18.75rem;
 		margin: 0 auto;
 		display: flex;
